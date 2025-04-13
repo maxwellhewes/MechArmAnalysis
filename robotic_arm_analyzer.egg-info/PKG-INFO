@@ -1,0 +1,94 @@
+Metadata-Version: 2.1
+Name: robotic_arm_analyzer
+Version: 0.1.0
+Summary: A Python package for analyzing mechanical and electrical requirements of robotic arms
+Home-page: https://github.com/yourusername/robotic_arm_analyzer
+Author: Your Name
+Author-email: your.email@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.21.0
+Requires-Dist: matplotlib>=3.4.0
+Requires-Dist: scipy>=1.7.0
+
+# Robotic Arm Analyzer
+
+A Python package for analyzing mechanical and electrical requirements of robotic arms. This package is designed as an educational resource for engineering students to understand the fundamental principles of robotic arm design.
+
+## Features
+
+- Mechanical analysis:
+  - Torque calculations
+  - Moment of inertia calculations
+  - Power requirements
+  - Joint analysis
+
+- Electrical analysis:
+  - Current calculations
+  - Power consumption analysis
+  - Battery requirements
+  - Complete power system analysis
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/robotic_arm_analyzer.git
+cd robotic_arm_analyzer
+```
+
+2. Install the required dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Install the package:
+```bash
+pip install -e .
+```
+
+## Usage
+
+Here's a basic example of how to use the package:
+
+```python
+from robotic_arm_analyzer.mechanical import MechanicalAnalyzer
+from robotic_arm_analyzer.electrical import ElectricalAnalyzer
+
+# Initialize analyzers
+mech_analyzer = MechanicalAnalyzer()
+elec_analyzer = ElectricalAnalyzer()
+
+# Example parameters
+masses = [1.0, 0.8, 0.5]  # kg
+distances = [0.3, 0.2, 0.15]  # meters
+angles = [45, 30, 0]  # degrees
+
+# Mechanical analysis
+torques, inertias = mech_analyzer.analyze_joint_requirements(masses, distances, angles)
+
+# Electrical analysis
+joint_powers = [mech_analyzer.calculate_required_power(t, 1.0) for t in torques]
+total_power, energy_wh, capacity_ah = elec_analyzer.analyze_power_system(joint_powers, 2.0)
+```
+
+For more detailed examples, see the `examples` directory.
+
+## Educational Value
+
+This package is designed to help students understand:
+- Basic mechanical principles in robotics
+- Electrical requirements for robotic systems
+- The relationship between mechanical and electrical components
+- How to calculate and optimize system requirements
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details. 
